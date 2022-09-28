@@ -3,7 +3,7 @@
         <li class="nav-item nav-profile">
             <div class="nav-link">
                 <div class="profile-image">
-                    <img src="{{asset('melody/images/faces/face16.jpg')}}" alt="image" />
+                    <img src="{{asset('melody/images/faces/elbicho.jpg')}}" alt="image" />
                 </div>
                 <div class="profile-name">
                     <p class="name">
@@ -106,11 +106,5 @@
                 </ul>
             </div>
         </li>
-        {{--<li class="nav-item">
-            <a class="nav-link" href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w">
-                <i class="fab fa-youtube menu-icon"></i>
-                <span class="menu-title">YouTube</span>
-            </a>
-        </li>--}}
     </ul>
 </nav>

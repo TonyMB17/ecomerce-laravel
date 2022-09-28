@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:50',
-            'description'=>'nullable|string|max:255',
+            'description'=>'nullable|string|max:1000',
         ];
     }
     public function messages()
@@ -35,7 +35,7 @@ class UpdateRequest extends FormRequest
             'name.string'=>'El valor no es correcto.',
             'name.max'=>'Solo se permite 50 caracteres.',
             'description.string'=>'El valor no es correcto.',
-            'description.max'=>'Solo se permite 255 caracteres.',
+            'description.max'=>'Solo se permite 1000 caracteres.',
         ];
     }
 }

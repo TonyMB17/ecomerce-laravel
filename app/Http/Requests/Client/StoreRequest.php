@@ -24,8 +24,8 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'string|required|max:255',
-            'dni'=>'string|required|unique:clients|min:8|max:8',
+            'name'=>'required|string|max:255',
+            'dni'=>'required|string|unique:clients|min:8|max:8',
             'ruc'=>'nullable|string|unique:clients|min:11|max:11',
             'address'=>'nullable|string|max:255',
             'phone'=>'string|nullable|unique:clients|min:9|max:9',

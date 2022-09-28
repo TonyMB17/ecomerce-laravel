@@ -18,7 +18,7 @@
                 <span class="input-group-text" id="basic-addon3">%</span>
             </div>
             <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3"
-                placeholder="18">
+                value="18">
         </div>
     </div>
 </div>
@@ -49,8 +49,8 @@
     </div>
     <div class="form-group col-md-2">
         <div class="form-group">
-            <label for="price">Precio de compra</label>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
+            <label for="price">Precio de compra por unidad</label>
+            <input type="number" step=".01" class="form-control" name="price" id="price" aria-describedby="helpId">
         </div>
     </div>
 </div>

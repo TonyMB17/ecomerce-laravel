@@ -68,7 +68,7 @@
                                     <td>{{$provider->email}}</td>
                                     <td>{{$provider->phone}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['providers.destroy',$provider], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['providers.destroy',$provider], 'method'=>'DELETE', 'class'=>'formulario-eliminar']) !!}
 
                                         <a class="jsgrid-button jsgrid-edit-button" href="{{route('providers.edit', $provider)}}" title="Editar">
                                             <i class="far fa-edit"></i>

@@ -33,17 +33,26 @@
 
                     <div class="form-group">
                       <label for="name">Nombre</label>
-                      <input type="text" class="form-control" name="name" id="name" value="{{$provider->name}}" aria-describedby="helpId" required>
+                      <input type="text" class="form-control" name="name" id="name" value="{{$provider->name}}" aria-describedby="helpId" >
+                      @error('name')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                       <label for="email">Correo electrónico</label>
-                      <input type="email" class="form-control" name="email" id="email" value="{{$provider->email}}" aria-describedby="emailHelpId" placeholder="ejemplo@gmail.com" required>
+                      <input type="text" class="form-control" name="email" id="email" value="{{$provider->email}}" aria-describedby="emailHelpId" placeholder="ejemplo@gmail.com" >
+                      @error('email')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="ruc_number">Numero de RUC</label>
-                        <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{$provider->ruc_number}}" aria-describedby="helpId" required>
+                        <input type="number" class="form-control" name="ruc_number" id="ruc_number" value="{{$provider->ruc_number}}" aria-describedby="helpId" >
+                        @error('ruc_number')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -53,7 +62,10 @@
 
                     <div class="form-group">
                         <label for="phone">Numero de contacto</label>
-                        <input type="number" class="form-control" name="phone" id="phone" value="{{$provider->phone}}" aria-describedby="helpId" required>
+                        <input type="number" class="form-control" name="phone" id="phone" value="{{$provider->phone}}" aria-describedby="helpId">
+                        @error('phone')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
 
                      <button type="submit" class="btn btn-primary mr-2">Actualizar</button>

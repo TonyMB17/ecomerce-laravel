@@ -66,7 +66,7 @@
                                     </td>
                                     <td>{{$role->description}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE', 'class'=>'formulario-eliminar']) !!}
 
                                         <a class="jsgrid-button jsgrid-edit-button" href="{{route('roles.edit', $role)}}" title="Editar">
                                             <i class="far fa-edit"></i>

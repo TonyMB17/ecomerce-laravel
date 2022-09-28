@@ -32,10 +32,25 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
+        $rules = [
+            'name' => 'required|max:250',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required'
+        ];
+
+        $message = [
+            'name.required' => 'El campo es requerido',
+            'email.required' => 'El campo es requerido',
+            'email.email' => 'No es un correo electronico',
+            'password.required' => 'El campo es requerido'            
+        ];
+
+        $this->validate($request, $rules,$message);
+
         $user = User::create($request->all());
         $user->update(['password'=> Hash::make($request->password)]);
         $user->roles()->sync($request->get('roles'));
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('mensaje', 'Usuario almacenado');
     }
     public function show(User $user)
     {
@@ -56,12 +71,27 @@ class UserController extends Controller
     }
     public function update(Request $request, User $user)
     {
+        $rules = [
+            'name' => 'required|max:250',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required'
+        ];
+
+        $message = [
+            'name.required' => 'El campo es requerido',
+            'email.required' => 'El campo es requerido',
+            'email.email' => 'No es un correo electronico',
+            'password.required' => 'El campo es requerido'            
+        ];
+
+        $this->validate($request, $rules,$message);
+
         if ($user->id == 1) {
             return redirect()->route('users.index');
         }else{
             $user->update($request->all());
             $user->roles()->sync($request->get('roles'));
-            return redirect()->route('users.index');
+            return redirect()->route('users.index')->with('mensaje', 'Usuario actualizado');
         }
     }
     public function destroy(User $user)
@@ -70,7 +100,7 @@ class UserController extends Controller
             return back();
         } else {
             $user->delete();
-            return back();
+            return back()->with('eliminar', 'ok');
         }
     }
 }

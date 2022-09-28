@@ -33,9 +33,22 @@ class RoleController extends Controller
     }
     public function store(Request $request)
     {
+        $rules = [
+            'name' => 'required|max:250',
+            'slug' => 'required|string|max:100',
+            'description' => 'nullable|string|max:255'
+        ];
+
+        $message = [
+            'name.required' => 'El campo es requerido',
+            'slug.required' => 'El campo es requerido',
+            'slug.string' => 'El valor no es correcto'            
+        ];
+
+        $this->validate($request, $rules,$message);
         $role = Role::create($request->all());
         $role->permissions()->sync($request->get('permissions'));
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('mensaje', 'Rol almacenado');
     }
     public function show(Role $role)
     {
@@ -48,9 +61,23 @@ class RoleController extends Controller
     }
     public function update(Request $request, Role $role)
     {
+        $rules = [
+            'name' => 'required|max:250',
+            'slug' => 'required|string|max:100',
+            'description' => 'nullable|string|max:255'
+        ];
+
+        $message = [
+            'name.required' => 'El campo es requerido',
+            'slug.required' => 'El campo es requerido',
+            'slug.string' => 'El valor no es correcto'            
+        ];
+
+        $this->validate($request, $rules,$message);
+        
         $role->update($request->all());
         $role->permissions()->sync($request->get('permissions'));
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('mensaje', 'Rol actualizado');
     }
     public function destroy(Role $role)
     {

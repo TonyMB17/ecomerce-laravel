@@ -32,17 +32,24 @@
 
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text"
+                        <input value = "{{old('name')}}" type="text"
                           class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
+                          @error('name')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                       </div>
                       <div class="form-group">
                           <label for="slug">Slug</label>
-                          <input type="text"
+                          <input value = "{{old('slug')}}" type="text"
                             class="form-control" name="slug" id="slug" aria-describedby="helpId" placeholder="">
+                            @error('slug')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                         </div>
                       <div class="form-group">
                         <label for="description">Descripción</label>
                         <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                        <small id="helpId" class="text-muted">Campo opcional</small>
                       </div>
 
 

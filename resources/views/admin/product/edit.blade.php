@@ -34,7 +34,10 @@
 
                     <div class="form-group">
                       <label for="name">Nombre</label>
-                      <input type="text" name="name" id="name" value="{{$product->name}}" class="form-control" aria-describedby="helpId" required>
+                      <input type="text" name="name" id="name" value="{{$product->name}}" class="form-control" aria-describedby="helpId" >
+                      @error('name')
+                         <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -45,8 +48,12 @@
 
                     <div class="form-group">
                         <label for="sell_price">Precio de venta</label>
-                        <input type="number" name="sell_price" id="sell_price" value="{{$product->sell_price}}" class="form-control" aria-describedby="helpId" required>
+                        <input type="number" step=".01" name="sell_price" id="sell_price" value="{{$product->sell_price}}" class="form-control" aria-describedby="helpId">
+                        @error('sell_price')
+                         <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
+
                     <div class="form-group">
                       <label for="category_id">Categoría</label>
                       <select class="form-control" name="category_id" id="category_id">
@@ -63,22 +70,15 @@
                     <div class="form-group">
                         <label for="provider_id">Proveedor</label>
                         <select class="form-control" name="provider_id" id="provider_id">
-                          @foreach ($providers as $product)
-                          <option value="{{$product->id}}"
-                            @if ($product->id == $product->provider_id)
+                          @foreach ($providers as $producto)
+                          <option value="{{$producto->id}}"
+                            @if ($producto->id == $producto->provider_id)
                             selected
                             @endif
-                            >{{$product->name}}</option>
+                            >{{$producto->name}}</option>
                           @endforeach
                         </select>
                     </div>
-
-                    {{--  <div class="custom-file mb-4">
-                        <input type="file" class="custom-file-input" name="image" id="image" lang="es">
-                        <label class="custom-file-label" for="image">Seleccionar Archivo</label>
-                    </div>  --}}
-
-
                    
                     <div class="card-body">
                         <h4 class="card-title d-flex">Imagen de producto
@@ -86,9 +86,10 @@
                             <a href="dropify.html" class="font-weight-light" target="_blank">Seleccionar Archivo</a>
                           </small>
                         </h4>
-                        <input type="file"  name="picture" id="picture" class="dropify" />
+                        <input type="file" name="picture" id="picture" class="dropify" data-default-file="{{asset('image/'.$product->image)}}" />
                     </div>
 
+                    
                      <button type="submit" class="btn btn-primary mr-2">Editar</button>
                      <a href="{{route('products.index')}}" class="btn btn-light">
                         Cancelar

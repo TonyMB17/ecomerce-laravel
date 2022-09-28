@@ -35,13 +35,21 @@
                     <div class="form-group">
                       <label for="name">Nombre</label>
                       <input type="text"
-                        class="form-control" name="name" id="name" value="{{$client->name}}" aria-describedby="helpId" required>
+                        class="form-control" name="name" id="name" value="{{$client->name}}" aria-describedby="helpId">
+                        @error('name')
+                        <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
+                    <br>
                     </div>
+                    
                     
                     <div class="form-group">
                         <label for="dni">DNI</label>
                         <input type="number"
-                          class="form-control" name="dni" id="dni" value="{{$client->dni}}" aria-describedby="helpId" required>
+                          class="form-control" name="dni" id="dni" value="{{$client->dni}}" aria-describedby="helpId">
+                          @error('dni')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -49,6 +57,10 @@
                         <input type="number"
                           class="form-control" name="ruc" id="ruc" value="{{$client->ruc}}" aria-describedby="helpId">
                           <small id="helpId" class="form-text text-muted">Este campo es opcional.</small>
+                          @error('ruc')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                          @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -56,21 +68,34 @@
                         <input type="text"
                           class="form-control" name="address" id="address" value="{{$client->address}}" aria-describedby="helpId">
                           <small id="helpId" class="form-text text-muted">Este campo es opcional.</small>
-                    </div>
+                          @error('address')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                          @enderror
+                        <br>
+                    </div>                    
 
                     <div class="form-group">
                         <label for="phone">Teléfono \ Celular</label>
                         <input type="number"
                           class="form-control" name="phone" id="phone" value="{{$client->phone}}" aria-describedby="helpId">
                           <small id="helpId" class="form-text text-muted">Este campo es opcional.</small>
+                          @error('phone')
+                          <small class="alter alert-danger">*{{$message}}</small>
+                          @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email"
+                        <input type="text"
                           class="form-control" name="email" id="email" value="{{$client->email}}" aria-describedby="helpId">
                           <small id="helpId" class="form-text text-muted">Este campo es opcional.</small>
+                          @error('email')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                            @enderror
+                        <br>
                     </div>
+                    
                     
 
                      <button type="submit" class="btn btn-primary mr-2">Editar</button>

@@ -52,7 +52,7 @@ class ProductController extends Controller
             $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
             $product->update(['code'=>$numeroConCeros]);
         }
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('mensaje', 'Producto almacenado');
     }
     public function show(Product $product)
     {
@@ -61,30 +61,38 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::get();
-        $providers = Provider::get();
+        $providers = Provider::get();        
+        //dd($product);
         return view('admin.product.edit', compact('product', 'categories', 'providers'));
     }
     public function update(UpdateRequest $request, Product $product)
-    {
-        if($request->hasFile('picture')){
+    {        
+        if($request->hasFile('picture'))
+        {
             $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/image"),$image_name);
+
+            $product->update($request->all()+[
+                'image'=>$image_name,
+            ]);
         }
-        $product->update($request->all()+[
-            'image'=>$image_name,
-        ]);
+        else
+        {
+            $product->update($request->all());
+        }
+        
         if ($request->code == "") {
             $numero = $product->id;
             $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
             $product->update(['code'=>$numeroConCeros]);
         }
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('mensaje', 'Producto actualizado');
     }
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('eliminar', 'ok');
     }
 
     public function change_status(Product $product)

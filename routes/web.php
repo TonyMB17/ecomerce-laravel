@@ -2,6 +2,7 @@
 
 use App\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PrincipalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+//Route::get('/', [PrincipalController::class, 'index'] );
+
+Route::get('/', 'PrincipalController@index')->name('inicio');
+Route::get('/Categorias', 'PrincipalController@Categorias')->name('categoria');
+Route::get('/DetalleProducto/{id}', 'PrincipalController@DetalleProducto')->name('detalle');
+Route::get('/Carrito', 'PrincipalController@Carrito')->name('carrito');
+Route::get('/Delivery', 'PrincipalController@Delivery')->name('delivery');
+
+// Route::get('/', function() {
+//     return redirect()->route('PrincipalPage.Home');
+// });
+
+Route::get('/login', function() {
     return redirect()->route('login');
-});
+})->name('login');
 
 Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
 Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports.date');

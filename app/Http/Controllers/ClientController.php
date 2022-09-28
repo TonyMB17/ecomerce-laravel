@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Client;
-use Illuminate\Http\Request;
 use App\Http\Requests\Client\StoreRequest;
 use App\Http\Requests\Client\UpdateRequest;
 
@@ -34,7 +33,7 @@ class ClientController extends Controller
         if ($request->sale == 1) {
             return redirect()->back();
         }
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('mensaje', 'Cliente almacenado');
     }
     public function show(Client $client)
     {
@@ -51,11 +50,11 @@ class ClientController extends Controller
     public function update(UpdateRequest $request, Client $client)
     {
         $client->update($request->all());
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('mensaje', 'Cliente actualizado');
     }
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('eliminar', 'ok');
     }
 }

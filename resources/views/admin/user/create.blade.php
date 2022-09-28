@@ -32,16 +32,25 @@
 
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input value = "{{old('name')}}" type="text" name="name" id="name" class="form-control" placeholder="" aria-describedby="helpId">
+                        @error('name')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input value = "{{old('email')}}" type="text" name="email" id="email" class="form-control" placeholder="" aria-describedby="helpId">
+                        @error('email')
+                        <small class="alter alert-danger">*{{$message}}</small>
+                      @enderror
                       </div>
                       
                       <div class="form-group">
                           <label for="password">Contraseña</label>
-                          <input type="password" name="password" id="password" class="form-control" placeholder="" aria-describedby="helpId">
+                          <input value = "{{old('password')}}" type="password" name="password" id="password" class="form-control" placeholder="" aria-describedby="helpId">
+                          @error('password')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                       </div>
 
                     @include('admin.user._form')

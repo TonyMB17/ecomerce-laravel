@@ -20,15 +20,28 @@
     <link rel="shortcut icon" href="http://www.urbanui.com/" />
 </head>
 
-<body>
+<body onload="mensajes()">
     <div class="container-scroller">
+        {{--mensaje de confirmacion--}}
+        @if(session('mensaje'))
+        {{--para que se desplege el mensaje--}}
+            <script>
+                function mensajes(){
+                    Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '{{session('mensaje')}}',
+                    showConfirmButton: false,
+                    timer: 1500
+                    });
+                }
+            </script>
+        @endif
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="#">
-                    {{--<img src="{{asset('melody/images/logo.svg')}}" alt="logo" />--}}AMB</a>
-                <a class="navbar-brand brand-logo-mini" href="index-2.html">
-                    {{--<img src="{{asset('melody/images/logo-mini.svg')}}" alt="logo" />--}}A</a>
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">                
+                <a class="navbar-brand brand-logo" href="#"><span style="color: rgb(255, 0, 0);;font-size: 16px">MINIMARKET</span>MANOLITO</a>
+                <a class="navbar-brand brand-logo-mini" href="index-2.html"><span style="color: rgb(255, 0, 0);font-size: 16px">m</span>M</a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -52,7 +65,7 @@
                     @yield('create')
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="{{asset('melody/images/faces/face16.jpg')}}" alt="profile" />
+                            <img src="{{asset('melody/images/faces/elbicho.jpg')}}" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
@@ -147,7 +160,41 @@
     {!! Html::script('melody/js/dashboard.js') !!}
     <!-- End custom js for this page-->
     @yield('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    @if (session('eliminar')  == 'ok')
+        <script>
+            Swal.fire(
+            '¡Eliminado!',
+            'El juego se elimino con exito.',
+            'success'
+            )
+        </script>
+    @endif
+
+    <script>
+        $('.formulario-eliminar').submit(function(e){
+            e.preventDefault();
+
+            Swal.fire({
+            title: '¿Estas seguro?',
+            text: "Este registro se eliminara definitivamente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, eliminar!',
+            cancelButtonText: 'Cancelar',
+            }).then((result) => {
+            if (result.isConfirmed) {
+                
+                this.submit();
+            }
+            });
+        });
+        
+    </script>
 </body>
 
 

@@ -85,7 +85,7 @@
 
                                     <td>{{$product->category->name}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE', 'class'=>'formulario-eliminar']) !!}
 
                                         <a class="jsgrid-button jsgrid-edit-button" href="{{route('products.edit', $product)}}" title="Editar">
                                             <i class="far fa-edit"></i>

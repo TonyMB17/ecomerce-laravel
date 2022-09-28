@@ -33,7 +33,10 @@
 
                     <div class="form-group">
                       <label for="name">Nombre</label>
-                      <input type="text" name="name" id="name" class="form-control" aria-describedby="helpId" required>
+                      <input value = "{{old('name')}}" type="text" name="name" id="name" class="form-control" aria-describedby="helpId">
+                      @error('name')
+                        <small class="alter alert-danger">*{{$message}}</small>
+                      @enderror
                     </div>
                     <div class="form-group">
                       <label for="code">Código de barras</label>
@@ -42,7 +45,10 @@
                     </div>
                     <div class="form-group">
                         <label for="sell_price">Precio de venta</label>
-                        <input type="number" step="0.01" name="sell_price" id="sell_price" class="form-control" aria-describedby="helpId" required>
+                        <input value = "{{old('sell_price')}}" type="number" step=".01" name="sell_price" id="sell_price" class="form-control" aria-describedby="helpId">
+                        @error('sell_price')
+                         <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                     </div>
                     <div class="form-group">
                       <label for="category_id">Categoría</label>
@@ -73,7 +79,7 @@
                             <a href="dropify.html" class="font-weight-light" target="_blank">Seleccionar Archivo</a>
                           </small>
                         </h4>
-                        <input type="file"  name="picture" id="picture" class="dropify" />
+                        <input type="file"  name="picture" id="picture" class="dropify" required/>
                     </div>
 
                      <button type="submit" class="btn btn-primary mr-2">Registrar</button>

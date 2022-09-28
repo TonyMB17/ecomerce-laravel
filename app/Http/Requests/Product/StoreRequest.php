@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
 
-            'name'=>'string|required|unique:products|max:255',
+            'name'=>'required|string|unique:products|max:255',
          
             'sell_price'=>'required',
 

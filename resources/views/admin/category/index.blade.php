@@ -66,8 +66,9 @@
                                     </td>
                                     <td>{{$category->description}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['categories.destroy',$category], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['categories.destroy',$category], 'method'=>'DELETE', 'class'=>'formulario-eliminar']) !!}
 
+                                        
                                         <a class="jsgrid-button jsgrid-edit-button" href="{{route('categories.edit', $category)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>

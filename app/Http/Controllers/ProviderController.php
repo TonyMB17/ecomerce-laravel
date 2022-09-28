@@ -30,7 +30,7 @@ class ProviderController extends Controller
     public function store(StoreRequest $request)
     {
         Provider::create($request->all());
-        return redirect()->route('providers.index');
+        return redirect()->route('providers.index')->with('mensaje', 'Proveedor almacenado');
     }
     public function show(Provider $provider)
     {
@@ -43,11 +43,11 @@ class ProviderController extends Controller
     public function update(UpdateRequest $request, Provider $provider)
     {
         $provider->update($request->all());
-        return redirect()->route('providers.index');
+        return redirect()->route('providers.index')->with('mensaje', 'Proveedor actualizado');
     }
     public function destroy(Provider $provider)
     {
         $provider->delete();
-        return redirect()->route('providers.index');
+        return redirect()->route('providers.index')->with('eliminar', 'ok');
     }
 }

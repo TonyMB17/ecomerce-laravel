@@ -66,7 +66,7 @@
                                     </td>
                                     <td>{{$user->email}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['users.destroy',$user], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['users.destroy',$user], 'method'=>'DELETE', 'class'=>'formulario-eliminar']) !!}
 
                                         <a class="jsgrid-button jsgrid-edit-button" href="{{route('users.edit', $user)}}" title="Editar">
                                             <i class="far fa-edit"></i>

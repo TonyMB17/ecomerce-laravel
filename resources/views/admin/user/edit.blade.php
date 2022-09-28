@@ -33,10 +33,16 @@
                     <div class="form-group">
                         <label for="name">Nombre</label>
                         <input type="text" name="name" id="name" value="{{$user->name}}" class="form-control" placeholder="" aria-describedby="helpId">
+                        @error('name')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                       </div>
                       <div class="form-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" name="email" id="email" value="{{$user->email}}" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="text" name="email" id="email" value="{{$user->email}}" class="form-control" placeholder="" aria-describedby="helpId">
+                        @error('email')
+                            <small class="alter alert-danger">*{{$message}}</small>
+                        @enderror
                       </div>
                       
                       

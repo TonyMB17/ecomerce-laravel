@@ -18,7 +18,7 @@
   <!-- inject:css -->
   {!! Html::style('melody/css/style.css') !!}
   <!-- endinject -->
-  <link rel="shortcut icon" href="melody/images/favicon.png" />
+  <link rel="shortcut icon" href="melody/images/favicon.png" />  
 </head>
 
 <body>
@@ -28,9 +28,9 @@
         <div class="row flex-grow">
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
-              {{--<div class="brand-logo">
-                <img src="{{asset('melody/images/logo.svg')}}" alt="logo">
-              </div>--}}
+              {{-- <div class="brand-logo">
+                <img src="{{asset('img/logo.png')}}" alt="logo">
+              </div> --}}
               <h4>Login</h4>
               <h6 class="font-weight-light">Iniciar sesión</h6>
 
