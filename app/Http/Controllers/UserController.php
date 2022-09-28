@@ -73,15 +73,13 @@ class UserController extends Controller
     {
         $rules = [
             'name' => 'required|max:250',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required'
+            'email' => 'required|email|max:255|unique:users'
         ];
 
         $message = [
             'name.required' => 'El campo es requerido',
             'email.required' => 'El campo es requerido',
-            'email.email' => 'No es un correo electronico',
-            'password.required' => 'El campo es requerido'            
+            'email.email' => 'No es un correo electronico'            
         ];
 
         $this->validate($request, $rules,$message);
