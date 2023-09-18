@@ -2,200 +2,93 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('title')</title>
-    <!-- plugins:css -->
-    {!! Html::style('melody/vendors/iconfonts/font-awesome/css/all.min.css') !!}
-    {!! Html::style('melody/vendors/css/vendor.bundle.base.css') !!}
-    {!! Html::style('melody/vendors/css/vendor.bundle.addons.css') !!}
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    {!! Html::style('melody/css/style.css') !!}
-    @yield('styles')
-    <!-- endinject -->
-    <link rel="shortcut icon" href="http://www.urbanui.com/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Admin Dashboard Template">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Light Q'umer - Gestion de Documentos</title>
+
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/perfectscroll/perfect-scrollbar.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/pace/pace.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/highlight/styles/github-gist.css')}}" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link href="{{asset('assets/css/main.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/lq.png')}}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/lq.png')}}" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </head>
 
-<body onload="mensajes()">
-    <div class="container-scroller">
-        {{--mensaje de confirmacion--}}
-        @if(session('mensaje'))
-        {{--para que se desplege el mensaje--}}
-            <script>
-                function mensajes(){
-                    Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: '{{session('mensaje')}}',
-                    showConfirmButton: false,
-                    timer: 1500
-                    });
-                }
-            </script>
-        @endif
-        <!-- partial:partials/_navbar.html -->
-        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">                
-                <a class="navbar-brand brand-logo" href="#"><span style="color: rgb(255, 0, 0);;font-size: 16px">MINIMARKET</span>MANOLITO</a>
-                <a class="navbar-brand brand-logo-mini" href="index-2.html"><span style="color: rgb(255, 0, 0);font-size: 16px">m</span>M</a>
-            </div>
-            <div class="navbar-menu-wrapper d-flex align-items-stretch">
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                    <span class="fas fa-bars"></span>
-                </button>
-                <ul class="navbar-nav">
-                    <li class="nav-item nav-search d-none d-md-flex">
-                        <div class="nav-link">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-search"></i>
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav navbar-nav-right">
-                    @yield('create')
-                    <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="{{asset('melody/images/faces/elbicho.jpg')}}" alt="profile" />
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
-                            aria-labelledby="profileDropdown">
-                            {{--  <a class="dropdown-item">
-                                <i class="fas fa-cog text-primary"></i>
-                                Settings
-                            </a>  --}}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"
-                            onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                                <i class="fas fa-power-off text-primary"></i>
-                                Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    @yield('options')
-                </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
-                    <span class="fas fa-bars"></span>
-                </button>
-            </div>
-        </nav>
-        <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_settings-panel.html -->
-            <div class="theme-setting-wrapper">
-                <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div>
-                <div id="theme-settings" class="settings-panel">
-                    <i class="settings-close fa fa-times"></i>
-                    <p class="settings-heading">SIDEBAR SKINS</p>
-                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-                        <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
-                    </div>
-                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
-                    </div>
-                    <p class="settings-heading mt-2">HEADER SKINS</p>
-                    <div class="color-tiles mx-0 px-4">
-                        <div class="tiles primary"></div>
-                        <div class="tiles success"></div>
-                        <div class="tiles warning"></div>
-                        <div class="tiles danger"></div>
-                        <div class="tiles info"></div>
-                        <div class="tiles dark"></div>
-                        <div class="tiles default"></div>
-                    </div>
+<body>
+    <div class="app align-content-stretch d-flex flex-wrap ">
+        <div class="app-sidebar">
+            <div class="logo"> <!--logo-->
+                <a href="index.html" class="logo-icon"><span class="logo-text">Light Q'umer</span></a>
+                <div class="sidebar-user-switcher user-activity-online">
+                    <a href="#">
+                        <img src="../../assets/images/avatars/avatar.png">
+                        <span class="activity-indicator"></span>
+                        <span class="user-info-text">{{ Auth::user()->name }}<br><span class="user-state-info">Activo</span></span>
+                    </a>
                 </div>
             </div>
-            @yield('preference')
-            <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
             @include('layouts._nav')
             <!-- partial -->
-            <div class="main-panel">
-                @yield('content')
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-                <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.
-                            Todos los derechos reservados.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></> <i class="far fa-heart text-danger"></i></span>
-                    </div>
-                </footer>
-                <!-- partial -->
-            </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
+        <div class="app-container">
+            <!-- partial:partials/navbar.html -->
+            @include('layouts.navbar')
+            <!-- partial -->
+            <div class="app-content">
+                <!-- partial:partials/navbar.html -->
+                @include('layouts.sidebar')
+                <!-- partial -->
+                <div class="content-wrapper"> <!--Content-->
+                    @yield('content')
+                    <!-- content-wrapper ends -->
+                    <!-- partial:partials/_footer.html -->
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023.
+                                Todos los derechos reservados.</span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></> <i class="far fa-heart text-danger"></i></span>
+                        </div>
+                    </footer>
+                    <!-- partial -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- container-scroller -->
-
-    <!-- plugins:js -->
-    {!! Html::script('melody/vendors/js/vendor.bundle.base.js') !!}
-    {!! Html::script('melody/vendors/js/vendor.bundle.addons.js') !!}
-    <!-- endinject -->
-    <!-- Plugin js for this page-->
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
-    {!! Html::script('melody/js/off-canvas.js') !!}
-    {!! Html::script('melody/js/hoverable-collapse.js') !!}
-    {!! Html::script('melody/js/misc.js') !!}
-    {!! Html::script('melody/js/settings.js') !!}
-    {!! Html::script('melody/js/todolist.js') !!}
-    <!-- endinject -->
-    <!-- Custom js for this page-->
-    {!! Html::script('melody/js/dashboard.js') !!}
+    <!-- Javascripts -->
+    {!! Html::script('assets/plugins/jquery/jquery-3.5.1.min.js') !!}
+    {!! Html::script('assets/plugins/bootstrap/js/popper.min.js') !!}
+    {!! Html::script('assets/plugins/bootstrap/js/bootstrap.min.j') !!}
+    {!! Html::script('assets/plugins/perfectscroll/perfect-scrollbar.min.js') !!}
+    {!! Html::script('assets/plugins/pace/pace.min.js') !!}
+    {!! Html::script('assets/plugins/highlight/highlight.pack.js') !!}
+    {!! Html::script('assets/js/main.min.js') !!}
+    {!! Html::script('assets/js/custom.js') !!}
     <!-- End custom js for this page-->
-    @yield('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @if (session('eliminar')  == 'ok')
-        <script>
-            Swal.fire(
-            '¡Eliminado!',
-            'El juego se elimino con exito.',
-            'success'
-            )
-        </script>
-    @endif
-
-    <script>
-        $('.formulario-eliminar').submit(function(e){
-            e.preventDefault();
-
-            Swal.fire({
-            title: '¿Estas seguro?',
-            text: "Este registro se eliminara definitivamente",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '¡Si, eliminar!',
-            cancelButtonText: 'Cancelar',
-            }).then((result) => {
-            if (result.isConfirmed) {
-                
-                this.submit();
-            }
-            });
-        });
-        
-    </script>
 </body>
-
-
 </html>

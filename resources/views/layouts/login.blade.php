@@ -1,65 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sistema Punto De Venta</title>
-  <!-- plugins:css -->
-  {!! Html::style('melody/vendors/iconfonts/font-awesome/css/all.min.css') !!}
-  {!! Html::style('melody/vendors/css/vendor.bundle.base.css') !!}
-  {!! Html::style('melody/vendors/css/vendor.bundle.addons.css') !!}
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  {!! Html::style('melody/css/style.css') !!}
-  <!-- endinject -->
-  <link rel="shortcut icon" href="melody/images/favicon.png" />  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Responsive Admin Dashboard Template">
+  <meta name="keywords" content="admin,dashboard">
+  <meta name="author" content="stacks">
+  <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <!-- Title -->
+  <title>Iniciar sesion</title>
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+  <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/plugins/perfectscroll/perfect-scrollbar.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/plugins/pace/pace.css')}}" rel="stylesheet">
+
+
+  <!-- Theme Styles -->
+  <link rel="stylesheet" href="{{asset('assets/css/main.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+  <!-- <link href="../../assets/css/main.min.css" rel="stylesheet">
+    <link href="../../assets/css/custom.css" rel="stylesheet"> -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/images/neptune.png')}}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/neptune.png')}}" />
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
-        <div class="row flex-grow">
-          <div class="col-lg-6 d-flex align-items-center justify-content-center">
-            <div class="auth-form-transparent text-left p-3">
-              {{-- <div class="brand-logo">
-                <img src="{{asset('img/logo.png')}}" alt="logo">
-              </div> --}}
-              <h4>Login</h4>
-              <h6 class="font-weight-light">Iniciar sesión</h6>
+  <div class="app app-auth-sign-in align-content-stretch d-flex flex-wrap justify-content-end">
+    <div class="app-auth-background">
 
-
-              @yield('content')
-
-
-            </div>
-          </div>
-          {{--<div class="col-lg-6 login-half-bg d-flex flex-row">
-            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2020 Todos los derechos reservados</p>
-          </div>--}}
-        </div>
-      </div>
-      <!-- content-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
+    <div class="app-auth-container">
+      <div class="logo">
+        <a href="#">Light Q'umer</a>
+      </div>
+
+
+      @yield('content')
+
+
+      <div class="divider"></div>
+      <div class="auth-alts">
+        <a href="#" class="auth-alts-google"></a>
+        <a href="#" class="auth-alts-facebook"></a>
+        <a href="#" class="auth-alts-twitter"></a>
+      </div>
+    </div>
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  {!! Html::script('melody/vendors/js/vendor.bundle.base.js') !!}
-  {!! Html::script('melody/vendors/js/vendor.bundle.addons.js') !!}
-  <!-- endinject -->
-  <!-- inject:js -->
-  {!! Html::script('melody/js/off-canvas.js') !!}
-  {!! Html::script('melody/js/hoverable-collapse.js') !!}
-  {!! Html::script('melody/js/misc.js') !!}
-  {!! Html::script('melody/js/settings.js') !!}
-  {!! Html::script('melody/js/todolist.js') !!}
-  <!-- endinject -->
+
+  <!-- Javascripts -->
+  <script src="{{asset('assets/plugins/jquery/jquery-3.5.1.min.js')}}"></script>
+  <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('assets/plugins/perfectscroll/perfect-scrollbar.min.js')}}"></script>
+  <script src="{{asset('assets/plugins/pace/pace.min.js')}}"></script>
+  <script src="{{asset('assets/js/main.min.js')}}"></script>
+  <script src="{{asset('assets/js/custom.js')}}"></script>
 </body>
+
 </html>

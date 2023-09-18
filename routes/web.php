@@ -17,7 +17,7 @@ use App\Http\Controllers\PrincipalController;
 
 //Route::get('/', [PrincipalController::class, 'index'] );
 
-Route::get('/', 'PrincipalController@index')->name('inicio');
+//Route::get('/', 'PrincipalController@index')->name('inicio');
 Route::get('/Categorias', 'PrincipalController@Categorias')->name('categoria');
 Route::get('/DetalleProducto/{id}', 'PrincipalController@DetalleProducto')->name('detalle');
 Route::get('/Carrito', 'PrincipalController@Carrito')->name('carrito');
@@ -27,7 +27,7 @@ Route::get('/Delivery', 'PrincipalController@Delivery')->name('delivery');
 //     return redirect()->route('PrincipalPage.Home');
 // });
 
-Route::get('/login', function() {
+Route::get('/', function() {
     return redirect()->route('login');
 })->name('login');
 

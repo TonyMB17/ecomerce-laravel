@@ -2,54 +2,43 @@
 @section('content')
 
 <form class="pt-3" method="POST" action="{{ route('login') }}">
-    @csrf
+  @csrf
+  <p class="auth-description">Por favor, inicie sesion para ingresar al panel de administrador</p>
+  <div class="auth-credentials m-b-xxl">
+
     <div class="form-group">
-      <label for="email">Correo electrónico</label>
-      <div class="input-group">
-        <div class="input-group-prepend bg-transparent">
-          <span class="input-group-text bg-transparent border-right-0">
-            <i class="fa fa-user text-primary"></i>
-          </span>
-        </div>
-        <input id="email" type="email" name="email" class="form-control form-control-lg border-left-0 @error('email') is-invalid @enderror" id="email" placeholder="Username" required>
+      <label for="signInEmail" class="form-label">Dirección de correo electrónico</label>
+      <div class="input-group has-validation">
+        <span class="material-icons input-group-text" id="inputGroupPrepend">email</span>
+        <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" aria-describedby="inputGroupPrepend" placeholder="example@gmail.com">
         @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
+        <div class="invalid-feedback">
+          {{ $message }}
+        </div>
         @enderror
       </div>
     </div>
+
     <div class="form-group">
-      <label for="password">Contraseña</label>
-      <div class="input-group">
-        <div class="input-group-prepend bg-transparent">
-          <span class="input-group-text bg-transparent border-right-0">
-            <i class="fa fa-lock text-primary"></i>
-          </span>
-        </div>
-        <input id="password" type="password" name="password" class="form-control form-control-lg border-left-0 @error('password') is-invalid @enderror" id="password" placeholder="Password" required>   
+      <label for="signInPassword" class="form-label">Contraseña</label>
+      <div class="input-group has-validation">
+        <span class="material-icons input-group-text" id="inputGroupPrepend">lock</span>
+        <input id="signInPassword" type="password" name="password" class="form-control @error('password') is-invalid @enderror" aria-describedby="signInPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
         @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror                  
+        <div class="valid-feedback" role="alert">
+          {{ $message }}
+        </div>
+        @enderror
       </div>
     </div>
-    <div class="my-2 d-flex justify-content-between align-items-center">
-      <div class="form-check">
-        <label class="form-check-label text-muted">
-          <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="form-check-input">
-          Mantenerme registrado
-        </label>
-      </div>
-      {{--  <a href="#" class="auth-link text-black">Forgot password?</a>  --}}
-    </div>
-    <div class="my-3">
-      <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"type="submit">INICIAR SESIÓN</button>
-    </div>
-    
-    {{--  <div class="text-center mt-4 font-weight-light">
-      Dont have an account? <a href="register-2.html" class="text-primary">Create</a>
-    </div>  --}}
-  </form>
+
+  </div>
+
+
+  <div class="auth-submit">
+    <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+    <a href="#" class="auth-forgot-password float-end">¿Has olvidado tu contraseña?</a>
+  </div>
+
+</form>
 @endsection
